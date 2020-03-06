@@ -21,19 +21,31 @@ productCtrl.getProducts = (req, res, next) => {
 
     axios.get(url + '/products.json')
         .then(response => {
-            //console.log(response.data);
+            console.log(response.data);
             const filterjson = [];
             const json = response.data.products;
 
             json.forEach(e => {
+
+        // If we'll get a product without image, avoid error and say 'No data found'        
+        var im;
+                try {
+                    im = e.image.src;
+                  }
+                  catch(error) {
+                    console.error(error);
+                    im = "No data"
+     
+                  }
+
                 const tmp = {
                     title: e.title,
                     description: e.body_html,
-                    image: e.image.src,
+                    image: im,//e.image.src;
                     price: e.variants["0"].price
                 };
                 filterjson.push(tmp);
- 
+
             });
             console.log(filterjson);
             res.json(filterjson);
@@ -49,7 +61,24 @@ productCtrl.getProducts = (req, res, next) => {
 
 
 //Add new product
- productCtrl.newProduct = (req, res, next) => { };
+productCtrl.newProduct = (req, res, next) => {
+
+    axios.post(url + '/products.json', {
+        "product": {
+            title: req.body.title,
+            body_html: req.body.description,
+            variants: [{
+                price: req.body.price
+            }]
+        }
+    }).then(response => {
+        res.json(response.data)
+    }).catch(e => {
+        console.log(e);
+        res.json(e);
+    });
+
+};
 
 module.exports = productCtrl;
 
