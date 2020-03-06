@@ -13,7 +13,7 @@ app.use(express.json());
 //Get user and password and verify
 app.use((req, res, next) => {
 
-    const auth = {username: 'user@example.com', password: 'Abcd1234'} // change this
+    const auth = {username: 'user@example.com', password: 'Abcd1234'}
   
     //Username and password from header
     const b64auth = (req.headers.authorization || '').split(' ')[1] || ''
