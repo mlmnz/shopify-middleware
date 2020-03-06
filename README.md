@@ -7,7 +7,7 @@ In shopifyAuth.json are the credentials for ShopifyAPI
 
 The listening port is 3000
 
-
+You need use a BasicAuth
 
 
 To get all products, you make a GET request:
@@ -26,6 +26,7 @@ Following schema has example:
         "description": "This is tProduct3's description =)",
         "price": "5000.00"
     }
+
 
 
 
