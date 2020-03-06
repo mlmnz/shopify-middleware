@@ -1,0 +1,28 @@
+{
+  "name": "shopify-middleware",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "clear && nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlmnz/shopify-middleware.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlmnz/shopify-middleware/issues"
+  },
+  "homepage": "https://github.com/mlmnz/shopify-middleware#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
