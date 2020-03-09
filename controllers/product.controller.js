@@ -1,59 +1,48 @@
 const axios = require('axios');
 
-
 // Products controller def
 const productCtrl = {};
 
 // Credentials, apiversion from Shopify
-const shopifyAPI = require('../shopifyAuth.json');
+const api = require('../shopifyAuth.json');
 
-//URL Format
-const url = 'https://'.concat(shopifyAPI.apiKey, ':',
-    shopifyAPI.password, '@',
-    shopifyAPI.hostname, '/admin/api/',
-    shopifyAPI.apiVer);
-
-
-
+//URL Format 
+const username=api['apiKey']
+const password=api['password']
+const shop=api['hostname']
+const apiversion=api['apiVer']
+const resource='products'
+const url = `https://${username}:${password}@${shop}.myshopify.com/admin/api/${apiversion}/${resource}.json`
 
 // Get all products from db
 productCtrl.getProducts = (req, res, next) => {
 
-    axios.get(url + '/products.json')
+    //Make the GET request to Shopify API
+    axios.get(url)
         .then(response => {
-            console.log(response.data);
-            const filterjson = [];
-            const json = response.data.products;
+            const raw = response.data['products'];
+            const products = [];
 
-            json.forEach(e => {
-
-        // If we'll get a product without image, avoid error and say 'No data found'        
-        var im;
-                try {
-                    im = e.image.src;
-                  }
-                  catch(error) {
-                    console.error(error);
-                    im = "No data"
-     
-                  }
-
-                const tmp = {
-                    title: e.title,
-                    description: e.body_html,
-                    image: im,//e.image.src;
-                    price: e.variants["0"].price
-                };
-                filterjson.push(tmp);
-
+            //For each element (products), get name, description, image and price properties
+            raw.forEach(product => {
+                products.push({
+                    'name': product['title'],
+                    'description': product['body_html'],
+                    'image': product['image'] == null ? "Image not found" : product['image']['src'],
+                    'price': product['variants'][0]['price']
+                })
             });
-            console.log(filterjson);
-            res.json(filterjson);
+
+           //Response to client
+            res.json({ 
+                'status': 'Successful', 
+                'message': "Products list", 
+                'products': products })
 
         })
         .catch(err => {
-            console.log(err);
-            res.json("status:error")
+            console.error(err);
+            next(err)
         });
 
 };
@@ -62,21 +51,43 @@ productCtrl.getProducts = (req, res, next) => {
 
 //Add new product
 productCtrl.newProduct = (req, res, next) => {
+    //Validate the required keys
+    const keys = ['name','description', 'price']
+    keys.forEach(key => {
+        if (!(key in req.body)){
+            console.error(`The key '${key}' was not found`)
+            res.status(400)
+            res.json({
+                'status': 'Error',
+                'message': `The key '${key}' was not found`
+              })
+        }
 
-    axios.post(url + '/products.json', {
-        "product": {
-            title: req.body.title,
-            body_html: req.body.description,
-            variants: [{
-                price: req.body.price
+    })
+
+    //Fill new products schema
+   const newProduct = {
+        'product': {
+            'title': req.body['name'],
+            'body_html': req.body['description'],
+            'variants': 
+            [{
+                'price': req.body['price']
             }]
         }
-    }).then(response => {
-        res.json(response.data)
-    }).catch(e => {
-        console.log(e);
-        res.json(e);
-    });
+    }
+
+    axios.post(url, newProduct)
+        .then(response => {
+            res.json({ 
+                'status': 'Successful', 
+                'message': "Product created",
+                'response' : response.data})
+        })
+        .catch(err => {
+            console.error(err);
+            next(err)
+        });
 
 };
 
