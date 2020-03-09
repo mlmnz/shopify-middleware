@@ -10,4 +10,5 @@ router.get("/products", product.getProducts);
 //Create new product
 router.post("/products",product.newProduct);
 
+
 module.exports = router;

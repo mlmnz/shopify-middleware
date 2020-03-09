@@ -43,7 +43,7 @@ app.use((req, res, next) => {
 
 
 //Routes
-app.use('/api/products', require('./routes/product.routes'));
+app.use('/api', require('./routes/product.routes'));
 
 //Invalid routes
 app.use((req, res) => {
