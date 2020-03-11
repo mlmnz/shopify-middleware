@@ -21,26 +21,26 @@ To get all products, you make a GET request:
 
 The ouput will be like:
 
-{
-  "status": "Successful",
-  "message": "Products list",
-  "products": {
-        {
-        "name": "tProduct1",
-        "description": "This is the tProdut1's description",
-        "image": "https://cdn.shopify.com/s/files/1/...",
-        "price": "1000.00"
-        },
-        {
-        "name": "tProduct2",
-        "description": "This is tProduct2's description =0",
-        "image": "https://cdn.shopify.com/s/files/1/...",
-        "price": "2000.00"
-        },
-        {...} ,
-        {...}
+    {
+      "status": "Successful",
+      "message": "Products list",
+      "products": {
+            {
+            "name": "tProduct1",
+            "description": "This is the tProdut1's description",
+            "image": "https://cdn.shopify.com/s/files/1/...",
+            "price": "1000.00"
+            },
+            {
+            "name": "tProduct2",
+            "description": "This is tProduct2's description =0",
+            "image": "https://cdn.shopify.com/s/files/1/...",
+            "price": "2000.00"
+            },
+            {...} ,
+            {...}
+        }
     }
-}
 
 
 ## Create a new product
