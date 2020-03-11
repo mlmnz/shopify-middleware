@@ -11,8 +11,13 @@ The listening port is 3000
 You need use a BasicAuth in the header request, If you provide incorrect credentials or not provide, you get an error message like:
 
     {
+<<<<<<< HEAD
     "status": "Error",
     "message": "Not authorized. Authentication is required and has not yet been provided"
+=======
+      "status": "Error",
+      "message": "Not authorized. Authentication is required and has not yet been provided"
+>>>>>>> 322e7ee361798c211d75d15198c7cead6ef22477
     }
 
 ## Get Products
@@ -28,19 +33,30 @@ The ouput will be like:
             {
             "name": "tProduct1",
             "description": "This is the tProdut1's description",
+<<<<<<< HEAD
             "image": "https://cdn.shopify.com/s/files/1/0353/8570/4579/products/148789aaadc35de909219cfd32e6f2df.png?v=1583514792",
+=======
+            "image": "https://cdn.shopify.com/s/files/1/0353...",
+>>>>>>> 322e7ee361798c211d75d15198c7cead6ef22477
             "price": "1000.00"
             },
             {
             "name": "tProduct2",
             "description": "This is tProduct2's description =0",
+<<<<<<< HEAD
             "image": "https://cdn.shopify.com/s/files/1/0353/8570/4579/products/Canal_2_TCS.png?v=1583514901",
+=======
+            "image": "https://cdn.shopify.com/s/files/1/03...",
+>>>>>>> 322e7ee361798c211d75d15198c7cead6ef22477
             "price": "2000.00"
             },
             {...} 
         ]
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 322e7ee361798c211d75d15198c7cead6ef22477
 
 ## Create a new product
 To create a new product, you make a POST request:
