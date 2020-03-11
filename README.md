@@ -20,25 +20,26 @@ To get all products, you make a GET request:
 >yourhost:3000/api/products
 
 The ouput will be like:
-    {
-      "status": "Successful",
-      "message": "Products list",
-      "products": [
-        {
-          "name": "tProduct1",
-          "description": "This is the tProdut1's description",
-          "image": "https://cdn.shopify.com/s/files/1/0353/8570/4579/products/148789aaadc35de909219cfd32e6f2df.png?v=1583514792",
-          "price": "1000.00"
-        },
-        {
-          "name": "tProduct2",
-          "description": "This is tProduct2's description =0",
-          "image": "https://cdn.shopify.com/s/files/1/0353/8570/4579/products/Canal_2_TCS.png?v=1583514901",
-          "price": "2000.00"
-        },
-        {...} 
-    }
 
+    {
+    "status": "Successful",
+    "message": "Products list",
+    "products": [
+            {
+            "name": "tProduct1",
+            "description": "This is the tProdut1's description",
+            "image": "https://cdn.shopify.com/s/files/1/0353...",
+            "price": "1000.00"
+            },
+            {
+            "name": "tProduct2",
+            "description": "This is tProduct2's description =0",
+            "image": "https://cdn.shopify.com/s/files/1/03...",
+            "price": "2000.00"
+            },
+            {...} 
+        ]
+    }
 
 ## Create a new product
 To create a new product, you make a POST request:
