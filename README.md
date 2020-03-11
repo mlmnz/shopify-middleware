@@ -1,4 +1,4 @@
-# shopify-middleware
+# Shopify Middleware
 
 Middleware with the Node.js(v12.16.0) Express framework, to use the Shopify API.
 
@@ -7,7 +7,7 @@ In shopifyAuth.json are the credentials for ShopifyAPI
 
 The listening port is 3000
 
-## Authenticacion
+## Authentication
 You need use a BasicAuth in the header request, If you provide incorrect credentials or not provide, you get an error message like:
 
     {
