@@ -10,10 +10,10 @@ The listening port is 3000
 ## Authenticacion
 You need use a BasicAuth in the header request, If you provide incorrect credentials or not provide, you get an error message like:
 
-{
-  "status": "Error",
-  "message": "Not authorized. Authentication is required and has not yet been provided"
-}
+    {
+      "status": "Error",
+      "message": "Not authorized. Authentication is required and has not yet been provided"
+    }
 
 ## Get Products
 To get all products, you make a GET request:
@@ -24,7 +24,7 @@ The ouput will be like:
     {
       "status": "Successful",
       "message": "Products list",
-      "products": {
+      "products": [
             {
             "name": "tProduct1",
             "description": "This is the tProdut1's description",
@@ -39,7 +39,7 @@ The ouput will be like:
             },
             {...} ,
             {...}
-        }
+        ]
     }
 
 
